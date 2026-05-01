@@ -2,6 +2,14 @@ import socketserver
 import socket
 
 
+class clienthandler:
+    
+    def __init__(self, clientsocket: socket):
+        self.clientsocket = clientsocket
+        clientcount = clientcount + 1
+        clients.append(self)
+        pass
+    
 
 
 ip:str = "127.0.0.1"
@@ -23,14 +31,7 @@ def main():
         clients.appends(clienthandler(clientsocket=clientsocket))
         
 
-class clienthandler:
-    
-    def __init__(self, clientsocket: socket):
-        self.clientsocket = clientsocket
-        clientcount = clientcount + 1
-        clients.append(self)
-        pass
-    
+
 
 
 
