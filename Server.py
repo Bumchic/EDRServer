@@ -8,7 +8,6 @@ class clienthandler:
         self.clientsocket = clientsocket
         clientcount = clientcount + 1
         clients.append(self)
-        a =1
         pass
     
 
