@@ -6,6 +6,7 @@ class clienthandler:
     
     def __init__(self, clientsocket: socket):
         self.clientsocket = clientsocket
+        global clientcount
         clientcount = clientcount + 1
         clients.append(self)
         pass

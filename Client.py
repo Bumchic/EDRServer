@@ -5,6 +5,8 @@ port = 8080
 
 server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
-if(server.connect((ip, port))):
+try:
+    server.connect((ip, port))
     print('server connection success')
-
+except TimeoutError as e:
+    print('server connection failed: ' + e)
