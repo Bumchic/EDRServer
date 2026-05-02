@@ -10,3 +10,5 @@ try:
     print('server connection success')
 except TimeoutError as e:
     print('server connection failed: ' + e)
+except Exception as e:
+    print(e)
