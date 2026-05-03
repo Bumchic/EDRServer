@@ -13,24 +13,26 @@ class clienthandler:
     
 
 
-ip:str = "127.0.0.1"
+Host = None
 port:int = 8080
 clientcount:int = 0
 clients: list[clienthandler] = []
 
 def main():
     print('running')
-    serversocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    serversocket.bind((ip, port))
-    serversocket.listen()
+    with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+        s.bind((Host, port))
+        s.listen(1)
+        while True:
+            clientsocket, addr = s.accept()
+            with clientsocket:
+                print("client connected from ", addr)
+                clients.append(clienthandler(clientsocket=clientsocket))
 
 
 
-    while True:
-        clientsocket, addr = serversocket.accept()
-        print("client connected from ", addr)
-        clients.append(clienthandler(clientsocket=clientsocket))
-        
+
+
 
 
 
