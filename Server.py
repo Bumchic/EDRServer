@@ -27,8 +27,8 @@ def main():
 
 
     while True:
-        clientsocket = serversocket.accept()
-        print("client connected from " + clientsocket[1])
+        clientsocket, addr = serversocket.accept()
+        print("client connected from " + addr)
         clients.appends(clienthandler(clientsocket=clientsocket))
         
 
