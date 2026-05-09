@@ -20,8 +20,14 @@ clients: list[clienthandler] = []
 
 def main():
     print('running')
+    local_hostname = socket.gethostname()
+    ip_addresses = socket.gethostbyname_ex(local_hostname)[2]
+    filtered_ips = [ip for ip in ip_addresses if not ip.startswith("127.")]
+    first_ip = filtered_ips[:1]
+    Host = first_ip[0]
     with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
         s.bind((Host, port))
+        print('server hosted at ' + Host + ' on port ' + port.__str__())
         s.listen(1)
         while True:
             clientsocket, addr = s.accept()
